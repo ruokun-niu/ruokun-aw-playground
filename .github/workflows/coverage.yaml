@@ -1,0 +1,97 @@
+# Copyright 2024 The Drasi Authors.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+name: Generate Rust Code Coverage
+
+on:
+  push:
+    branches:
+      - codecov-test
+  pull_request:
+    branches:
+      - main
+      - feature/*
+
+env:
+  CARGO_TERM_COLOR: always
+
+permissions: 
+  contents: read
+
+  
+jobs:
+  core_code_coverage:
+    name: Generate Code Coverage for drasi-core
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    services:
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6379:6379
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+
+      - name: Install libraries
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jq libjq-dev libonig-dev
+
+      - name: Set JQ_LIB_DIR
+        run: echo "JQ_LIB_DIR=/usr/lib/x86_64-linux-gnu" >> $GITHUB_ENV
+
+      - name: Cache Cargo registry
+        uses: actions/cache@v4.2.2 # v4.0.2
+        with:
+          path: ~/.cargo/registry
+          key: ${{ runner.os }}-cargo-registry-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cargo-registry-
+
+      - name: Cache Cargo index
+        uses: actions/cache@v4.2.2 # v4.0.2
+        with:
+          path: ~/.cargo/git
+          key: ${{ runner.os }}-cargo-index-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cargo-index-
+
+      - name: Cache Cargo build
+        uses: actions/cache@v4.2.2 # v4.0.2
+        with:
+          path: target
+          key: ${{ runner.os }}-cargo-build-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cargo-build-
+      - name: Install Rust and Cargo tarpaulin
+        run: |
+          rustup update stable
+          cargo install cargo-tarpaulin
+      
+      - name: Generate Code Coverage
+        env:
+          REDIS_URL: redis://localhost:6379
+        run: |
+          cargo tarpaulin --out Xml
+          mv cobertura.xml drasi-core-tarpaulin-report.xml
+          echo "Code coverage report generated"
+
+      - name: Upload Code Coverage Report to Codecov
+        if: "!contains(github.event.head_commit.message, 'clippy fix')"
+        uses: codecov/codecov-action@v5
+        with:
+          files: drasi-core-tarpaulin-report.xml
+          name: codecov-drasi-core

@@ -1,0 +1,53 @@
+[package]
+name = "drasi-core"
+version = "0.1.0"
+edition = "2021"
+license = "Apache-2.0"
+description = "Drasi Core"
+repository = "https://github.com/drasi-project/drasi-core"
+keywords = ["drasi"]
+categories = ["database"]
+readme = "../readme.md"    
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[features]
+default = []
+parallel_solver = []
+
+[dependencies]
+async-trait = "0.1.68"
+drasi-query-ast = { path = "../query-ast" }
+hashers = "1.0.1"
+ordered-float = "3.7.0"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+rand = { version = "0.8.5", features = ["small_rng"] }
+tokio = { version =  "1.29.1", features = ["rt-multi-thread", "sync", "time", "macros"] }
+async-recursion = "1.0.4"
+futures = "0.3.28"
+tokio-stream = "0.1.14"
+async-stream = "0.3.5"
+itoa = "1.0.1"
+caches = "0.2.4"
+log = "0.4.20"
+tracing = "0.1.37"
+opentelemetry = "0.20"
+chrono = { version = "0.4.41", features = ["serde"] }
+dateparser = "0.2.0"
+chrono-tz = {version = "0.10.3", features = ["serde"] }
+regex = "1.9.5"
+iso8601-duration = "0.2.0"
+round = "0.1.2"
+priority-queue = "1.3.2"
+thiserror = "1.0.50"
+statistical = "1.0.0"
+approx = "0.5.1"
+lazy_static = "1.4.0"
+once_cell = "1.19.0"
+time = { version = "0.3.41", features = ["std", "parsing", "macros", "serde"] }
+time-macros = { version = "0.2.6", features = ["serde"] }
+
+[dev-dependencies]
+mockall = "0.13.1"
+drasi-query-cypher = { path = "../query-cypher" }

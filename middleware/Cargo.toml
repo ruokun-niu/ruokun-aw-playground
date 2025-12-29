@@ -1,0 +1,24 @@
+[package]
+name = "drasi-middleware"
+version = "0.1.0"
+edition = "2021"
+license = "Apache-2.0"
+description = "Drasi Core Middleware"
+repository = "https://github.com/drasi-project/drasi-core"
+keywords = ["drasi"]
+categories = ["database"]
+readme = "../readme.md"
+
+[dependencies]
+async-trait = "0.1.68"
+drasi-core = { path = "../core" }
+log = "0.4"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+jsonpath-rust = "0.5.0"
+base64 = "0.22.0"
+ordered-float = "3.7.0"
+hex = "0.4.3"
+urlencoding = "2.1.2"
+jq-rs ="0.4.1"
+tokio = { version = "1.29.1", features = ["rt-multi-thread", "sync", "time", "macros"] }

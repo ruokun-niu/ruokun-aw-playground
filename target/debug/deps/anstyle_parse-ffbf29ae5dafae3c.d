@@ -1,0 +1,9 @@
+/Users/ruokunniu/Documents/drasi/drasi-core/target/debug/deps/anstyle_parse-ffbf29ae5dafae3c.d: /Users/ruokunniu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/anstyle-parse-0.2.5/src/lib.rs /Users/ruokunniu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/anstyle-parse-0.2.5/src/params.rs /Users/ruokunniu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/anstyle-parse-0.2.5/src/state/mod.rs /Users/ruokunniu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/anstyle-parse-0.2.5/src/state/definitions.rs /Users/ruokunniu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/anstyle-parse-0.2.5/src/state/table.rs
+
+/Users/ruokunniu/Documents/drasi/drasi-core/target/debug/deps/libanstyle_parse-ffbf29ae5dafae3c.rmeta: /Users/ruokunniu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/anstyle-parse-0.2.5/src/lib.rs /Users/ruokunniu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/anstyle-parse-0.2.5/src/params.rs /Users/ruokunniu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/anstyle-parse-0.2.5/src/state/mod.rs /Users/ruokunniu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/anstyle-parse-0.2.5/src/state/definitions.rs /Users/ruokunniu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/anstyle-parse-0.2.5/src/state/table.rs
+
+/Users/ruokunniu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/anstyle-parse-0.2.5/src/lib.rs:
+/Users/ruokunniu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/anstyle-parse-0.2.5/src/params.rs:
+/Users/ruokunniu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/anstyle-parse-0.2.5/src/state/mod.rs:
+/Users/ruokunniu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/anstyle-parse-0.2.5/src/state/definitions.rs:
+/Users/ruokunniu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/anstyle-parse-0.2.5/src/state/table.rs:

@@ -1,0 +1,3 @@
+cargo:rerun-if-changed=proto/drasi/v1/source.proto
+cargo:rerun-if-changed=proto/drasi/v1/common.proto
+cargo:rerun-if-changed=proto
